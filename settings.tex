@@ -1,0 +1,73 @@
+% make new section on new page
+\newcommand{\subsectionbreak}{\clearpage}
+\newcommand{\sectionbreak}{\clearpage}
+
+% section title before number
+\titleformat{\section}{\center\normalfont\Large\bfseries}{}{0em}{}
+
+% section title before number
+\titleformat{\subsection}{\normalfont\large\bfseries}{}{0em}{}
+
+% subsection numbering without section number
+\renewcommand{\thesubsection}{\arabic{subsection}}
+
+% reset equation numer each section and subsection
+\counterwithin*{equation}{section}
+\counterwithin*{equation}{subsection}
+
+% also print numbers of section and subsections with equations numbers
+\renewcommand{\theequation}{\arabic{section}.\arabic{subsection}.\arabic{equation}}
+
+% set first section counter to 0
+\setcounter{section}{-1}
+
+\hypersetup{
+ colorlinks=true,
+ linkcolor=blue,
+ filecolor=magenta,
+ urlcolor=cyan,
+}
+
+\newcommand{\makeTilte}[4]
+{\begin{titlepage}
+ \newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
+ \center
+ \includegraphics[scale=.7]{./images/PWr.png} \\[1cm]
+ {\textbf{\Large {#1}}}\\[0.5cm]
+ {\textbf{\large {#2}}}\\[0.5cm]
+ \HRule \\[0.5cm]
+ {\huge \bfseries {#3}} \\[0.2cm]
+ \HRule \\[1.5cm]
+ \begin{minipage}{0.5\textwidth}
+  \begin{center}
+   \large \textbf{{#4}}\\[0.5cm]
+   \emph{Automatyka i Robotyka,\\
+    Wydział Elektroniki,\\
+    Politechnika Wrocławska}
+  \end{center}
+ \end{minipage} \\[2cm]
+ \vspace*{4.5cm}
+ {\large \today} \\[2cm]
+ \vfill
+\end{titlepage}
+\pagestyle{empty}
+\tableofcontents
+\newpage
+\pagestyle{fancy}
+\fancyhf{}
+\headheight = 30pt
+\cfoot{\textcolor{Gray}{{#1} - {#3}}}
+\lhead{\leftmark}
+\rhead{{#4}\\Strona \thepage}
+\renewcommand{\headrulewidth}{1.5pt}
+\renewcommand{\footrulewidth}{0.5pt}}
+
+\newcommand{\slimHeader}[2]
+{\pagestyle{fancy}
+\fancyhf{}
+\headheight = 60pt
+\rhead
+{{#1} \\
+{#2} \\
+Strona \thepage}
+\renewcommand{\headrulewidth}{1.5pt}}
